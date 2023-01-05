@@ -31,13 +31,18 @@
 
                     </ul>
                     <p class="navbar-text text-right">
-                        @if (User.Identity.IsAuthenticated)
+                        
+                        @{
+                            string userEmail;
+                            
+                        if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
                         {
-                            <a>Witaj ponownie, @User.Identity.Name.</a>
+                                <a>Witaj ponownie, @userEmail.</a>
                         }
                         else
                         {
-                            <a>Witaj, Gość.</a>
+                                <a>Witaj, Gość.</a>
+                        }
                         }
                     </p>
                 </div>
