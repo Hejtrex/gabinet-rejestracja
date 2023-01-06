@@ -1,4 +1,5 @@
-﻿namespace gabinet_rejestracja.Models
+﻿
+namespace gabinet_rejestracja.Models
 {
     public class Doctor
     {
