@@ -16,7 +16,5 @@ namespace gabinet_rejestracja.Models
 
         [Display(Name = "Komentarz")]
         public string? Comment { get; set; }
-
-        public IEnumerable<DateTime> UnavailableDates { get; set; }
     }
 }
