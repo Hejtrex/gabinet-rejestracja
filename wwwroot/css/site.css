@@ -1,5 +1,7 @@
 html {
-  font-size: 14px;
+    background-image: url('/images/front.png');
+    background-size: cover;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
