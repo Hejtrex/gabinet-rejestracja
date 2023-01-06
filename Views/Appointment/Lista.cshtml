@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AppointmentModel>
+
+@{
+    ViewData["Title"] = "Lista wizyt";
+}
+
+<h2>Lista wizyt</h2>
+
+<p>
+    @Html.ActionLink("Create", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentId)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        string sessionUserId;
+        Context.Request.Cookies.TryGetValue("UserId", out sessionUserId);
+        int SId = Int32.Parse(sessionUserId);
+        if (item.UserId == SId)
+        {
+            <tr>
+                <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id=item.AppointmentId}) |
+                @Html.ActionLink("Delete", "Delete", new {id=item.AppointmentId})
+            </td>
+        </tr>
+        }
+    }
+</table>
+<div>
+    <a asp-action="Lista">Wróć do listy</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

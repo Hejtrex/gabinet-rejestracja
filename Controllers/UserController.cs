@@ -4,11 +4,19 @@ using gabinet_rejestracja.Models;
 using Microsoft.AspNetCore.Mvc;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 using System.Data.SqlClient;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace gabinet_rejestracja.Controllers
 {
     public class UserController : Controller
     {
+        // User/Index
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+
         // GET: User/Register
         public ActionResult Register()
         {
@@ -63,7 +71,7 @@ namespace gabinet_rejestracja.Controllers
             {
                 return View(model);
             }
-
+            string userId = null;
             //var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (var db = new SqlConnection("Data Source=servergabinet.database.windows.net;Initial Catalog=gabinetbaza;User ID=adming;Password=Qwerty231;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
@@ -88,8 +96,17 @@ namespace gabinet_rejestracja.Controllers
                     // przykład z użyciem ciasteczek:
                     Response.Cookies.Append("Email", model.Email);
                     Response.Cookies.Append("Password", model.Password);
+                    string sql1 = "SELECT UserId FROM Users WHERE Email = @Email";
+                    SqlCommand command1 = new SqlCommand(sql1, db);
+                    command1.Parameters.AddWithValue("@Email", model.Email);
+                    SqlDataReader reader = command1.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Response.Cookies.Append("UserId", reader["UserId"].ToString());
+                    }
+                    reader.Close();
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Lista", "Appointment");
                 }
             }
         }
