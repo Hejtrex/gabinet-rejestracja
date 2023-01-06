@@ -29,6 +29,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
                         </li>
 
+
                     </ul>
                     <p class="navbar-text text-right">
                         
@@ -37,13 +38,30 @@
                             
                         if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
                         {
-                                <a>Witaj ponownie, @userEmail.</a>
+                                <ul class="navbar-nav">
+                                    <li >
+                                         <a>Witaj ponownie, @userEmail.</a> 
+                                </li>
+
+                                    <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="RemoveCookie('Email')">Wyloguj</a> 
+                                </li>       
+
+                                <script>
+                                    function RemoveCookie(name) {
+                                        var date = new Date();
+                                        date.setTime(date.getTime() - 1);
+                                        document.cookie = name + "=; expires=" + date.toGMTString();
+                                    }
+                                </script>
+                                </ul>
                         }
                         else
                         {
                                 <a>Witaj, Gość.</a>
                         }
                         }
+
                     </p>
                 </div>
             </div>
