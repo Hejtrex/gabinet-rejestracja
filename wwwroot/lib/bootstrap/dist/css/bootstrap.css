@@ -1150,7 +1150,9 @@ progress {
   }
 
   .col-md-3 {
-    flex: 0 0 auto;
+    position: center;
+    margin: auto;
+    margin-top: 5px;
     width: 25%;
   }
 
@@ -1622,7 +1624,7 @@ progress {
         -webkit-text-stroke-color: #000;
         stroke: #000;
         text-shadow: 0px 0px 10px rgb(0 0 0 / 30%);
-        padding-top: 100px;
+        padding-top: 10%;
     }
 
     .akapit {
@@ -6532,10 +6534,10 @@ textarea.form-control-lg {
 }
 
 .sticky-top {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1020;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 @media (min-width: 576px) {

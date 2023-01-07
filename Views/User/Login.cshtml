@@ -3,30 +3,48 @@
 @{
     ViewData["Title"] = "Logowanie";
 }
+<head>
 
-<h2>Logowanie</h2>
-
-<div class="row">
-    <div class="col-md-4">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<div class="text-center nav-text">
+<h1>Logowanie</h1>
+</div>
+<div class="body-tresc">
+   
         <form asp-controller="User" asp-action="Login" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
+                <div class="col-md-3">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                
             </div>
             <div class="form-group">
+            <div class="col-md-3">
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
+             </div>
             </div>
             <div class="form-group">
+            <div class="col-md-3">
                 <input type="submit" value="Zaloguj" class="btn btn-primary" />
             </div>
+            </div>
         </form>
-        <p>Nie masz konta? <a asp-controller="User" asp-action="Register">Zarejestruj się</a>.</p>
-    </div>
+        <p style="margin-top: 10px">Nie masz konta? <a asp-controller="User" asp-action="Register">Zarejestruj się</a>.</p>
+
+
+
 </div>
+<footer class="border-top footer text-muted" style="margin-top: 10%">
+    <div class="container">
+        &copy; 2023 - gabinet_rejestracja - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
 
 @section Scripts {
     @{
