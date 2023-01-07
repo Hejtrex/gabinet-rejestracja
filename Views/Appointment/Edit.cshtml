@@ -1,22 +1,34 @@
 ﻿@model AppointmentModel
 @{ViewData["Title"] = "Edit";}
 
+<head>
 
-<h2>Edit Appointment</h2>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<div class="text-center nav-text">
+    <h2>Przełóż wizytę</h2>
+</div>
+<div class="body-tresc">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Date"></label>
+            <input asp-for="Date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
 
-<form method="post">
-    <div class="form-group">
-        <label asp-for="Date"></label>
-        <input asp-for="Date" class="form-control" />
-        <span asp-validation-for="Date" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Comment"></label>
+            <input asp-for="Comment" class="form-control" />
+            <span asp-validation-for="Comment" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
 
-    <div class="form-group">
-        <label asp-for="Comment"></label>
-        <input asp-for="Comment" class="form-control" />
-        <span asp-validation-for="Comment" class="text-danger"></span>
+</div>
+<footer class="border-top footer text-muted" style="margin-top: 10%">
+    <div class="container">
+        &copy; 2023 - gabinet_rejestracja - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-</form>
+</footer>

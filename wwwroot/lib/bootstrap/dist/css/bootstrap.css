@@ -1180,7 +1180,7 @@ progress {
   }
 
   .col-md-9 {
-    flex: 0 0 auto;
+    position: center;
     width: 75%;
   }
 
@@ -1605,12 +1605,18 @@ progress {
     width: 66.66666667%;
   }
     .body-tresc{
+        margin-top: 20%;
+
+    }
+    .body-wizyta{
+        position
         margin-top: 15%;
+
 
     }
     .nav-text {
         color: #FFFBFB;
-        font-size: 68px;
+        font-size: 80px;
         -webkit-text-stroke-width: 1px;
         stroke-width: 1px;
         -webkit-text-stroke-color: #000;

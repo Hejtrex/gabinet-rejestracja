@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/gabinet_rejestracja.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+   
 </head>
 <body>
 
@@ -38,30 +38,30 @@
 
                                         if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
                                         {
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona Główna</a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Usługi</a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Create">Zarezerwuj wizytę</a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Lista">Wyświetl zarejestrowane wizyty</a>
-                                                                        </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona Główna</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Usługi</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Create">Zarezerwuj wizytę</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Lista">Wyświetl zarejestrowane wizyty</a>
+                                            </li>
                                         }
                                         else
                                         {
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona Główna</a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Usługi</a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Zaloguj się</a>
-                                                                        </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona Główna</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Usługi</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Zaloguj się</a>
+                                            </li>
                                         }
                                     }
                                 </li>
@@ -73,27 +73,27 @@
                                 @{
                                     if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
                                     {
-                                                                        <ul class="navbar-nav">
-                                                                            <li>
-                                                                                <a>Witaj ponownie, @userEmail.</a>
-                                                                            </li>
+                                        <ul class="navbar-nav">
+                                            <li>
+                                                <a>Witaj ponownie, @userEmail.</a>
+                                            </li>
 
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="RemoveCookie('Email'), RemoveCookie('UserId'), RemoveCookie('Password')">Wyloguj</a>
-                                                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="RemoveCookie('Email'), RemoveCookie('UserId'), RemoveCookie('Password')">Wyloguj</a>
+                                            </li>
 
-                                                                            <script>
-                                                                                function RemoveCookie(name) {
-                                                                                    var date = new Date();
-                                                                                    date.setTime(date.getTime() - 1);
-                                                                                    document.cookie = name + "=; expires=" + date.toGMTString();
-                                                                                }
-                                                                            </script>
-                                                                        </ul>
+                                            <script>
+                                                function RemoveCookie(name) {
+                                                    var date = new Date();
+                                                    date.setTime(date.getTime() - 1);
+                                                    document.cookie = name + "=; expires=" + date.toGMTString();
+                                                }
+                                            </script>
+                                        </ul>
                                     }
                                     else
                                     {
-                                                                        <a>Witaj, Gość.</a>
+                                      <a>Witaj, Gość.</a>
                                     }
                                 }
 
@@ -112,11 +112,7 @@
         </div>
   
 
-    <footer class="border-top footer text-muted" style="margin-top: 70%">
-        <div class="container">
-            &copy; 2023 - gabinet_rejestracja - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+  
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

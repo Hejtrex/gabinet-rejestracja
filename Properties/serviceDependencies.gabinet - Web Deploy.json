@@ -1,10 +1,21 @@
 {
   "dependencies": {
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "Data Source=servergabinet.database.windows.net;Initial Catalog=gabinetbaza;User ID=adming;Password=Qwerty231;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+      "dynamicId": null
+    },
     "mssql3": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "gabinetconnect1"
+    },
+    "mssql2": {
       "secretStore": "AzureAppSettings",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/servergabinet/databases/gabinetbaza",
       "type": "mssql.azure",
-      "connectionId": "gabinetconnect1"
+      "connectionId": "gabinetconnect"
     }
   }
 }

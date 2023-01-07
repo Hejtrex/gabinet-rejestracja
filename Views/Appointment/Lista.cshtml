@@ -4,52 +4,67 @@
     ViewData["Title"] = "Lista wizyt";
 }
 
-<h2>Lista wizyt</h2>
+<head>
 
-<p>
-    @Html.ActionLink("Create", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AppointmentId)
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        string sessionUserId;
-        Context.Request.Cookies.TryGetValue("UserId", out sessionUserId);
-        int SId = Int32.Parse(sessionUserId);
-        if (item.UserId == SId)
-        {
-            <tr>
-                <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AppointmentId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {id=item.AppointmentId}) |
-                @Html.ActionLink("Delete", "Delete", new {id=item.AppointmentId})
-            </td>
-        </tr>
-        }
-    }
-</table>
-<div>
-    <a asp-action="Lista">Wróć do listy</a>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<div class="text-center nav-text">
+<h1>Lista wizyt</h1>
 </div>
 
+<div class="body-tresc">
+    <p>
+        @Html.ActionLink("Umów się!", "create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentId)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            string sessionUserId;
+            Context.Request.Cookies.TryGetValue("UserId", out sessionUserId);
+            int SId = Int32.Parse(sessionUserId);
+            if (item.UserId == SId)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppointmentId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new {id=item.AppointmentId}) |
+                        @Html.ActionLink("Usuń", "delete", new {id=item.AppointmentId})
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+    <div>
+        <a asp-action="Lista">Wróć do listy</a>
+    </div>
+
+
+
+</div>
+<footer class="border-top footer text-muted" style="margin-top: 10%">
+    <div class="container">
+        &copy; 2023 - gabinet_rejestracja - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

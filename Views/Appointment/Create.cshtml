@@ -4,36 +4,57 @@
     ViewData["Title"] = "Zarezerwuj wizytę";
 }
 
-<h2>Zarezerwuj wizytę</h2>
-<div class="row">
-    <div class="col-md-4">
-        @{
-            string UserId;
+<head>
 
-            if (Context.Request.Cookies.TryGetValue("UserId", out UserId))
-            {
-                <form asp-controller="Appointment" asp-action="Create" method="post">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Date" class="control-label"></label>
-                        <input asp-for="Date" class="form-control" />
-                        <span asp-validation-for="Date" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Comment" class="control-label"></label>
-                        <input asp-for="Comment" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Zarezerwuj" class="btn btn-primary" />
-                    </div>
-                </form>
-            }
-        }
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<div class="text-center nav-text">
+    <h1 class="display-4">Zarezerwuj wizytę</h1>
     </div>
+    <style>
+        .body-wizyta{
+            
+            margin-top: 20%;
+            position: center;
+        }
+
+    </style>
+
+<div class="body-wizyta">
+ 
+            @{
+                string UserId;
+
+                if (Context.Request.Cookies.TryGetValue("UserId", out UserId))
+                {
+                                    <form asp-controller="Appointment" asp-action="Create" method="post">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="Date" class="control-label"></label>
+                                            <input asp-for="Date" class="form-control" />
+                                            <span asp-validation-for="Date" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Comment" class="control-label"></label>
+                                            <input asp-for="Comment" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Zarezerwuj" class="btn btn-primary" />
+                                        </div>
+                                    </form>
+                }
+            }
+  
+    <div style="margin-top: 15%;">
+        <a asp-action="Lista">Wróć do listy</a>
+    </div>
+
 </div>
-<div>
-    <a asp-action="Index">Wróć do listy</a>
-</div>
+  <footer class="border-top footer text-muted" style="margin-top: 70%">
+        <div class="container">
+            &copy; 2023 - gabinet_rejestracja - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
 
 @section Scripts {
     @{
