@@ -7,7 +7,12 @@
     },
     "mssql2": {
       "type": "mssql",
-      "connectionId": "gabinetconnect"
+      "connectionId": "gabinetconnect",
+      "dynamicId": null
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "gabinetconnect1"
     }
   }
 }

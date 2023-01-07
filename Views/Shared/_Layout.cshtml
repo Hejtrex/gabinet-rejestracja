@@ -7,102 +7,112 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/gabinet_rejestracja.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    <div class="text-center" style="background-image: url('/images/front.png'); background-size: cover;">
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">gabinet_rejestracja</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        @{/*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>*/}
-                        <li class="nav-item">
-                            @{
-                                string userEmail;
 
-                                if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Create">Zarezerwuj wizytę</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Lista">Wyświetl zarejestrowane wizyty</a>
-                                    </li>
+
+    <div class="text-center">
+        <div class ="text-center" style="background-image: url('/images/front.jpg');min-height:400px; max-height: 400px; background-size:cover; background-position:center "   >
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Matt&Patt Stomatology</a>
+                        <button class="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                @{
+                                    /*<li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>*/
                                 }
-                                else
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Zaloguj się</a>
-                                    </li>
-                                }
-                            }
-                        </li>
-                    </ul>
+                                <li class="nav-item">
+                                    @{
+                                        string userEmail;
 
-
-                    <p class="navbar-text text-right">
-                        
-                        @{  
-                        if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
-                        {
-                                <ul class="navbar-nav">
-                                    <li >
-                                         <a>Witaj ponownie, @userEmail.</a> 
-                                </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="RemoveCookie('Email'), RemoveCookie('UserId'), RemoveCookie('Password')">Wyloguj</a>
-                                    </li>       
-
-                                <script>
-                                    function RemoveCookie(name) {
-                                        var date = new Date();
-                                        date.setTime(date.getTime() - 1);
-                                        document.cookie = name + "=; expires=" + date.toGMTString();
+                                        if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
+                                        {
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona Główna</a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Usługi</a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Create">Zarezerwuj wizytę</a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Lista">Wyświetl zarejestrowane wizyty</a>
+                                                                        </li>
+                                        }
+                                        else
+                                        {
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona Główna</a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Usługi</a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Zaloguj się</a>
+                                                                        </li>
+                                        }
                                     }
-                                </script>
-                                </ul>
-                        }
-                        else
-                        {
-                                <a>Witaj, Gość.</a>
-                        }
-                        }
+                                </li>
+                            </ul>
 
-                    </p>
-                </div>
+
+                            <p class="navbar-text text-right">
+
+                                @{
+                                    if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
+                                    {
+                                                                        <ul class="navbar-nav">
+                                                                            <li>
+                                                                                <a>Witaj ponownie, @userEmail.</a>
+                                                                            </li>
+
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="RemoveCookie('Email'), RemoveCookie('UserId'), RemoveCookie('Password')">Wyloguj</a>
+                                                                            </li>
+
+                                                                            <script>
+                                                                                function RemoveCookie(name) {
+                                                                                    var date = new Date();
+                                                                                    date.setTime(date.getTime() - 1);
+                                                                                    document.cookie = name + "=; expires=" + date.toGMTString();
+                                                                                }
+                                                                            </script>
+                                                                        </ul>
+                                    }
+                                    else
+                                    {
+                                                                        <a>Witaj, Gość.</a>
+                                    }
+                                }
+
+                            </p>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
+
+        </div>
+  
+
+    <footer class="border-top footer text-muted" style="margin-top: 70%">
         <div class="container">
             &copy; 2023 - gabinet_rejestracja - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
