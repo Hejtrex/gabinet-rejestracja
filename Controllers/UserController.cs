@@ -37,6 +37,7 @@ namespace gabinet_rejestracja.Controllers
                 //var ConnStr = ConfigurationManager.ConnectionStrings["ConnectionStrings"].ConnectionString;
                 using (var db = new SqlConnection("Data Source=servergabinet.database.windows.net;Initial Catalog=gabinetbaza;User ID=adming;Password=Qwerty231;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
                 {
+                    db.Open();
                     string email = model.Email;
                     string sql1 = "SELECT COUNT(*) FROM [dbo].[Users] WHERE Email = @Email";
                     var command1 = new SqlCommand(sql1, db);
@@ -56,7 +57,7 @@ namespace gabinet_rejestracja.Controllers
                                 Password = model.Password,
                                 ConfirmPassword = model.ConfirmPassword,
                             };
-                            db.Open();
+                            
                             string sql = "INSERT INTO [dbo].[Users] ([UserId], [Email], [Password], [ConfirmPassword]) VALUES (ABS(CHECKSUM(NEWID()) % 2147483647) + 1, @Email, @Password, @ConfirmPassword)";
                             var command = new SqlCommand(sql, db);
                             command.Parameters.AddWithValue("@Email", user.Email);
