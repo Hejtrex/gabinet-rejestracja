@@ -63,8 +63,6 @@ namespace gabinet_rejestracja.Controllers
             using (var db = new SqlConnection("Data Source=servergabinet.database.windows.net;Initial Catalog=gabinetbaza;User ID=adming;Password=Qwerty231;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
                 db.Open();
-
-
                 // pobranie daty z rezerwacji
                 DateTime appointmentDate = model.Date;
 
