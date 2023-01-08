@@ -1641,10 +1641,18 @@ progress {
         font-family: 'Book Antiqua';
     }
     .nav-akapit-center {
-        margin-top: 5%;
-        margin-right: 5%;
+        margin-top: 3%;
         text-align: center;
         font-family: 'Book Antiqua';
+        font-size:xx-large;
+    }
+    .uslugi-list{
+
+
+    }
+    .uslugi-list:hover{
+        transition: 0.3s;
+        color:lightblue
     }
 
     .opis {
@@ -1655,6 +1663,14 @@ progress {
         text-align: left;
         padding-right: 100px;
         font-size: large;
+    }
+    .main-opis-cytat {
+        text-align: center;
+        padding-top: 55px;
+        padding-right: 100px;
+        font-size: large;
+        font-family: 'Book Antiqua';
+
     }
   .col-xl-9 {
     flex: 0 0 auto;
@@ -3983,6 +3999,13 @@ textarea.form-control-lg {
     block-size: 60px;
     border-color: black;
 }
+.button-uslugi {
+    border-radius: 10%;
+    border: medium;
+    margin-top: 1%;
+    block-size: 50px;
+    border-color: black;
+}
 
     .button-wizyta:hover {
         background-color: deepskyblue;
@@ -3990,12 +4013,18 @@ textarea.form-control-lg {
         border-radius: 10%;
         background-size: 110%;
     }
+.button-uslugi:hover {
+    background-color: deepskyblue;
+    transition: 0.5s;
+    border-radius: 10%;
+    background-size: 110%;
+}
 
 .nav-item:hover {
     background-color: deepskyblue;
     transition: 0.5s;
     border-radius: 10%;
-    background-size: 110%;
+    background-size: 120%;
 }
 .nav-pills .nav-link {
   background: none;
