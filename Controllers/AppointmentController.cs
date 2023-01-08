@@ -69,7 +69,7 @@ namespace gabinet_rejestracja.Controllers
                 DateTime appointmentDate = model.Date;
 
                 // utworzenie obiektu DateTime złożonego z daty z rezerwacji
-                DateTime today = DateTime.Now;
+                DateTime today = DateTime.Today;
                 DateTime appointmentDateTime = new DateTime(appointmentDate.Year, appointmentDate.Month, appointmentDate.Day, 0, 0, 0);
                 string sql1 = "SELECT COUNT(*) FROM [dbo].[Appointments] WHERE Date = @Date";
                 var command1 = new SqlCommand(sql1, db);
