@@ -46,8 +46,8 @@ namespace gabinet_rejestracja.Controllers
                     int count = (int)command1.ExecuteScalar();
                     if (count > 0)
                         {
-                            ModelState.AddModelError("", "Wybrany adres Email jest już zajęty");
-                            return View(model);
+                        ModelState.AddModelError("", "Wybrany adres Email jest już zajęty");
+                        return View(model);
                         }
                         else
                         {
@@ -65,12 +65,13 @@ namespace gabinet_rejestracja.Controllers
                             command.Parameters.AddWithValue("@ConfirmPassword", user.ConfirmPassword);
 
                             command.ExecuteNonQuery();
-                            //db.Users.Add(user);
-                            //db.SaveChanges();
-                        }
+                        //db.Users.Add(user);
+                        //db.SaveChanges();
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             }
-            return RedirectToAction("Index", "Home");
+            
         }
 
         // GET: User/Login
