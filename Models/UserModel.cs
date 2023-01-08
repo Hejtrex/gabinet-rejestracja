@@ -13,12 +13,13 @@ namespace gabinet_rejestracja.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
+        [StringLength(100, ErrorMessage = "{0} musi mieć przynajmniej {2} znaki i maksymalnie {1} znaków", MinimumLength = 2)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Podano dwa różne hasła!")]
+        [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
     }
 }
