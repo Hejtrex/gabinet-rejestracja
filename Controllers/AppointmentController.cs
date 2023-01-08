@@ -110,7 +110,7 @@ namespace gabinet_rejestracja.Controllers
                     return View(model);
                 }
             }
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Lista", "Appointment");
         }
         // POST : Appointment/Delete
 

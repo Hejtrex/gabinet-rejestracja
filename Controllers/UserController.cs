@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 using System.Data.SqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.ComponentModel.DataAnnotations;
 
 namespace gabinet_rejestracja.Controllers
 {
@@ -36,22 +37,36 @@ namespace gabinet_rejestracja.Controllers
                 //var ConnStr = ConfigurationManager.ConnectionStrings["ConnectionStrings"].ConnectionString;
                 using (var db = new SqlConnection("Data Source=servergabinet.database.windows.net;Initial Catalog=gabinetbaza;User ID=adming;Password=Qwerty231;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
                 {
-                    var user = new UserModel
-                    {
-                        Email = model.Email,
-                        Password = model.Password,
-                        ConfirmPassword = model.ConfirmPassword,
-                    };
-                    db.Open();
-                    string sql = "INSERT INTO [dbo].[Users] ([UserId], [Email], [Password], [ConfirmPassword]) VALUES (ABS(CHECKSUM(NEWID()) % 2147483647) + 1, @Email, @Password, @ConfirmPassword)";
-                    var command = new SqlCommand(sql, db);
-                    command.Parameters.AddWithValue("@Email", user.Email);
-                    command.Parameters.AddWithValue("@Password", user.Password);
-                    command.Parameters.AddWithValue("@ConfirmPassword", user.ConfirmPassword);
-                    
-                    command.ExecuteNonQuery();
-                    //db.Users.Add(user);
-                    //db.SaveChanges();
+                    string email = model.Email;
+                    string sql1 = "SELECT COUNT(*) FROM [dbo].[Users] WHERE Email = @Email";
+                    var command1 = new SqlCommand(sql1, db);
+                    command1.Parameters.AddWithValue("@Email", email);
+
+                    int count = (int)command1.ExecuteScalar();
+                    if (count > 0)
+                        {
+                            ModelState.AddModelError("", "Wybrany adres Email jest już zajęty");
+                            return View(model);
+                        }
+                        else
+                        {
+                            var user = new UserModel
+                            {
+                                Email = model.Email,
+                                Password = model.Password,
+                                ConfirmPassword = model.ConfirmPassword,
+                            };
+                            db.Open();
+                            string sql = "INSERT INTO [dbo].[Users] ([UserId], [Email], [Password], [ConfirmPassword]) VALUES (ABS(CHECKSUM(NEWID()) % 2147483647) + 1, @Email, @Password, @ConfirmPassword)";
+                            var command = new SqlCommand(sql, db);
+                            command.Parameters.AddWithValue("@Email", user.Email);
+                            command.Parameters.AddWithValue("@Password", user.Password);
+                            command.Parameters.AddWithValue("@ConfirmPassword", user.ConfirmPassword);
+
+                            command.ExecuteNonQuery();
+                            //db.Users.Add(user);
+                            //db.SaveChanges();
+                        }
                 }
             }
             return RedirectToAction("Index", "Home");

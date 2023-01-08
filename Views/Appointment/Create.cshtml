@@ -5,7 +5,6 @@
 }
 
 <head>
-
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <div class="text-center nav-text">
@@ -31,8 +30,7 @@
                         <div class="form-group">
                             <div class="col-md-3">
                                 <label asp-for="Date" class="control-label"></label>
-                                <div id="calendarContainer"></div>
-                                <input type="hidden" id="Date" name="Date" />
+                                <input asp-for="Date" class="form-control" />
                                 <span asp-validation-for="Date" class="text-danger"></span>
                             </div>
                         </div>
@@ -65,9 +63,6 @@
 
 @section Scripts {
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-
-    }
-        <script src="/js/calendar.js"></script>
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
