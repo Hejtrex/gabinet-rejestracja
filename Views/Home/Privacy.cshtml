@@ -29,7 +29,13 @@
                 if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
                 {
                     <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
-                }}
+                }
+                else
+                 {
+
+                    <button class="button-wizyta" onclick="location.pathname='/User/Register'">Umów się na wizytę!</button>
+                 }
+                }
 
             </div>
             
@@ -53,7 +59,12 @@
                 if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
                 {
                     <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
-                }}
+                }
+                else{
+
+                        <button class="button-wizyta" onclick="location.pathname='/User/Register'">Umów się na wizytę!</button>
+                }
+                }
             </div>
                  <img src="~/images/higienizacja.jpg" style="height:30%; width:30%">
         </div>
@@ -76,7 +87,13 @@
                 if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
                 {
                     <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
-                }}
+                }
+                else
+                {
+
+                        <button class="button-wizyta" onclick="location.pathname='/User/Register'">Umów się na wizytę!</button>
+                }
+                }
             </div>
             <img src="~/images/VINCI006-scaled.jpg" style="height:30%; width:30%">
         </div>
