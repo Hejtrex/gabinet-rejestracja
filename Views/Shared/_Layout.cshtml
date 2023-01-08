@@ -83,7 +83,9 @@
                                                         </li>
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="RemoveCookie('Email'), RemoveCookie('UserId'), RemoveCookie('Password')">Wyloguj</a>
+                                                            <form asp-controller="Home" asp-action="Logout" method="post">
+                                                            <button type="submit" class="nav-link text-dark">Wyloguj</button>
+                                                            </form>
                                                         </li>
 
                                                         <script>

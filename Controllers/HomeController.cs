@@ -18,6 +18,14 @@ namespace gabinet_rejestracja.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("Email");
+            Response.Cookies.Delete("UserId");
+            Response.Cookies.Delete("Password");
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Privacy()
         {
             return View();
