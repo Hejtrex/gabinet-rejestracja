@@ -24,8 +24,12 @@
                 Dlatego jeśli chcesz zadbać o zdrowie zębów i jamy ustnej, najlepszym wyborem jest konsultacja stomatologiczna. Można z niej skorzystać zarówno wtedy, gdy pojawią się niepokojące zmiany w jamie ustnej, jak i wówczas, gdy pozornie nic złego się w niej nie dzieje
 
             </p>
-            <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
-
+                @{
+                string userEmail;
+                if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
+                {
+                    <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
+                }}
 
             </div>
             
@@ -45,8 +49,11 @@
                     Higienizacja zębów polega m.in. na usuwaniu różnymi metodami kamienia nazębnego, osadu i przebarwień. Każdą  z metod dostosowujemy do efektu, jaki z jej pomocą ma być uzyskany. Dodatkowo, stosujemy lakierowanie i lakowanie zębów.
 
                 </p>
-                <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
-               
+                @{
+                if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
+                {
+                    <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
+                }}
             </div>
                  <img src="~/images/higienizacja.jpg" style="height:30%; width:30%">
         </div>
@@ -65,13 +72,12 @@
                 Wybielanie zębów w gabinecie dentystycznym jest zabiegiem bezpiecznym i skutecznym. Choć efekt nie jest stały, to warto co jakiś czas z niego skorzystać. Wybielanie zębów jest czymś innym niż rozjaśnianie. To pierwsze dotyczy zabiegów z użyciem środków wybielających. Rozjaśnianie natomiast, uzyskuje się po usunięciu osadów i zanieczyszczeń z powierzchni zębów.
                 
             </p>
-
-            <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
-
+            @{
+                if (Context.Request.Cookies.TryGetValue("Email", out userEmail))
+                {
+                    <button class="button-wizyta" onclick="location.pathname='/Appointment/Create'">Umów się na wizytę!</button>
+                }}
             </div>
-        
-
-            
             <img src="~/images/VINCI006-scaled.jpg" style="height:30%; width:30%">
         </div>
 
