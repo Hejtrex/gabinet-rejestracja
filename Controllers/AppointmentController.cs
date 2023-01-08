@@ -111,8 +111,6 @@ namespace gabinet_rejestracja.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Home");
-
             return RedirectToAction("Lista", "Appointment");
 
         }
