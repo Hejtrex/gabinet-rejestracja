@@ -68,17 +68,18 @@ namespace gabinet_rejestracja.Controllers
 
                 // utworzenie obiektu DateTime złożonego z daty z rezerwacji
                 DateTime today = DateTime.Today;
+                DateTime today_hour = DateTime.Now;
                 DateTime appointmentDateTime = new DateTime(appointmentDate.Year, appointmentDate.Month, appointmentDate.Day, appointmentDate.Hour, 0, 0);
                 string sql1 = "SELECT COUNT(*) FROM [dbo].[Appointments] WHERE Date = @Date";
                 var command1 = new SqlCommand(sql1, db);
                 command1.Parameters.AddWithValue("@Date", appointmentDateTime);
 
                 int count = (int)command1.ExecuteScalar();
-                if (appointmentDateTime >= today)
+                if (appointmentDateTime >= today_hour)
                 {
                     if (count > 0)
                     {
-                        ModelState.AddModelError("", "Wybrana data jest już zajęta");
+                        ModelState.AddModelError("", "Wybrana data/godzina jest już zajęta");
                         return View(model);
                     }
                     else
