@@ -99,6 +99,8 @@ namespace gabinet_rejestracja.Controllers
 
                         command.Parameters.AddWithValue("@UserId", UserId);
                         command.Parameters.AddWithValue("@Date", appointment.Date);
+                        if (appointment.Comment == null)
+                            appointment.Comment = "";
                         command.Parameters.AddWithValue("@Comment", appointment.Comment);
 
                         command.ExecuteNonQuery();
@@ -184,6 +186,8 @@ namespace gabinet_rejestracja.Controllers
 
                         command.Parameters.AddWithValue("@AppointmentId", id);
                         command.Parameters.AddWithValue("@Date", appointment.Date);
+                        if (appointment.Comment == null)
+                            appointment.Comment = "";
                         command.Parameters.AddWithValue("@Comment", appointment.Comment);
 
                         command.ExecuteNonQuery();
