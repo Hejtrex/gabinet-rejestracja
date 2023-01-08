@@ -68,39 +68,47 @@ namespace gabinet_rejestracja.Controllers
                 // pobranie daty z rezerwacji
                 DateTime appointmentDate = model.Date;
 
-                // utworzenie obiektu DateTime złożonego z daty i godziny z rezerwacji
+                // utworzenie obiektu DateTime złożonego z daty z rezerwacji
+                DateTime today = DateTime.Now;
                 DateTime appointmentDateTime = new DateTime(appointmentDate.Year, appointmentDate.Month, appointmentDate.Day, 0, 0, 0);
-
                 string sql1 = "SELECT COUNT(*) FROM [dbo].[Appointments] WHERE Date = @Date";
                 var command1 = new SqlCommand(sql1, db);
                 command1.Parameters.AddWithValue("@Date", appointmentDateTime);
 
                 int count = (int)command1.ExecuteScalar();
-                if (count > 0)
+                if (appointmentDateTime >= today)
                 {
-                    ModelState.AddModelError("", "Wybrana data jest już zajęta");
-                    return View(model);
+                    if (count > 0)
+                    {
+                        ModelState.AddModelError("", "Wybrana data jest już zajęta");
+                        return View(model);
+                    }
+                    else
+                    {
+                        var appointment = new AppointmentModel
+                        {
+                            UserId = model.UserId,
+                            AppointmentId = model.AppointmentId,
+                            Date = model.Date,
+                            Comment = model.Comment
+                        };
+
+                        string sql = "INSERT INTO [dbo].[Appointments] ([UserId], [AppointmentId], [Date], [Comment]) " +
+                            "VALUES (@UserId, ABS(CHECKSUM(NEWID()) % 2147483647) + 1, @Date, @Comment)";
+                        var command = new SqlCommand(sql, db);
+                        Request.Cookies.TryGetValue("UserId", out string UserId);
+
+                        command.Parameters.AddWithValue("@UserId", UserId);
+                        command.Parameters.AddWithValue("@Date", appointment.Date);
+                        command.Parameters.AddWithValue("@Comment", appointment.Comment);
+
+                        command.ExecuteNonQuery();
+                    }
                 }
                 else
                 {
-                    var appointment = new AppointmentModel
-                    {
-                        UserId = model.UserId,
-                        AppointmentId = model.AppointmentId,
-                        Date = model.Date,
-                        Comment = model.Comment
-                    };
-
-                    string sql = "INSERT INTO [dbo].[Appointments] ([UserId], [AppointmentId], [Date], [Comment]) " +
-                        "VALUES (@UserId, ABS(CHECKSUM(NEWID()) % 2147483647) + 1, @Date, @Comment)";
-                    var command = new SqlCommand(sql, db);
-                    Request.Cookies.TryGetValue("UserId", out string UserId);
-
-                    command.Parameters.AddWithValue("@UserId", UserId);
-                    command.Parameters.AddWithValue("@Date", appointment.Date);
-                    command.Parameters.AddWithValue("@Comment", appointment.Comment);
-
-                    command.ExecuteNonQuery();
+                    ModelState.AddModelError("", "Rejestrowanie się z datą wstecz jest niedozwolone.");
+                    return View(model);
                 }
             }
             return RedirectToAction("Index", "User");
