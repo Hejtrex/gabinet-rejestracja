@@ -3999,6 +3999,16 @@ textarea.form-control-lg {
     block-size: 60px;
     border-color: black;
 }
+.button-logout {
+    border-radius: 10%;
+    border: medium;
+    border-color: black;
+}
+.button-logout:hover{
+    background-color: deepskyblue;
+    transition: 0.5s;
+   
+}
 .button-uslugi {
     border-radius: 10%;
     border: medium;
